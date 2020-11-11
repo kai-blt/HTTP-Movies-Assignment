@@ -102,19 +102,18 @@ label {
 }
 
 .save {
-  top: 25px;
-  right: 25px;
+  top: 15%;
+  right: 15%;
 }
 
 .edit {
-  top: 75px;
-  right: 25px;
- 
+  top: 30%;
+  right: 15%;
 }
 
 .delete { 
-  top: 125px;
-  right: 25px; 
+  top: 45%;
+  right: 15%;
 }
 
 .save:hover, .edit:hover, .delete:hover {

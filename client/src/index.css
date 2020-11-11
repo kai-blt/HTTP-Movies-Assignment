@@ -34,6 +34,13 @@ label {
   font-weight: 700;
 }
 
+.update-movie-card button {
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 2%;
+  margin: 2% 0;
+}
+
 .movie-director {
   padding: 4px 0;
   font-size: 0.8rem;

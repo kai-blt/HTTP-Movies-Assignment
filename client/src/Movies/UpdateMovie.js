@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -15,30 +15,48 @@ const initialValues = {
 const UpdateMovie = (props) => {
     const [formValues, setFormValues] = useState(initialValues);
     const params = useParams();
+    const history = useHistory();
 
     //get fields
     useEffect(() => {
         axios
         .get(`http://localhost:5000/api/movies/${params.id}`)
             .then(res => setFormValues(res.data))
-            .catch(err => console.log(err.response));
+            .catch(err => console.log(err.response));       
     }, []);
 
+    console.log(formValues)
 
     //handlers
-    const onSubmit = () => {
+    const onSubmit =(e) => {
+        e.preventDefault();
+        axios
+        .put(`http://localhost:5000/api/movies/${params.id}`, formValues)
+            .then(res => {
+                setFormValues(initialValues);
+                props.getMovieList();
+                history.push('/');
+            })
+            .catch(err => console.log(err.response));
+    }
 
+    const handleChange = (e) => {
+        setFormValues({
+            ...formValues,
+            [e.target.name]: e.target.value
+        })
     }
 
     return(
         <div className="update-movie-card">            
-            <form>
+            <form onSubmit={onSubmit}>
                 <h2>Update Movie</h2><br/>
                 <label>Title
                     <input
                         type="text"
                         name="title"
                         value={formValues.title}
+                        onChange={handleChange}
                     />
                 </label>
                 <label>Director
@@ -46,13 +64,15 @@ const UpdateMovie = (props) => {
                         type="text"
                         name="director"
                         value={formValues.director}
+                        onChange={handleChange}
                     />
                 </label>
                 <label>Metascore
                     <input
-                        type="text"
+                        type="number"
                         name="metascore"
                         value={formValues.metascore}
+                        onChange={handleChange}
                     />
                 </label>
                 <label>Actors
@@ -60,6 +80,7 @@ const UpdateMovie = (props) => {
                         {formValues.stars.map(star => <option>{star}</option>)}
                     </select>
                 </label>
+                <button>Accept Changes</button>
             </form>
         </div>
     )

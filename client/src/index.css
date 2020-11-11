@@ -1,19 +1,57 @@
 body {
   margin: 0;
   padding: 0;
+  max-width: 100%;
   font-family: sans-serif;
-  background-color: #f2f2f2;
+  background-color: #555;
 }
 
-.movie-card {
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}
+
+.movie-card, .update-movie-card {
   background-color: #fff;
   border: 0;
+  border-radius: 10px;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   cursor: pointer;
   position: relative;
+  padding: 2%;
   margin: 1rem auto;
+  width: 80%;
+}
+
+.update-movie-card form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 80%;
+  margin: auto;
+  padding: 2%;
+}
+
+input {
+  width: 100%;
+  margin: 1% 0;
+  padding: 1% 0;
+}
+
+label {  
+  font-weight: 700;
+}
+
+.update-movie-card button {
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 2%;
+  margin: 2% 0;
 }
 
 .movie-director {
@@ -28,9 +66,7 @@ body {
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   cursor: pointer;
-  position: relative;
-  margin: 1rem auto;
-  width: 75%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,26 +84,47 @@ body {
   border: 1px solid grey;
   padding: 5px;
 }
-.save-wrapper {
+.save-wrapper, .movie-list {
   position: relative;
-  width: 75%;
+  width: 80%;
   margin: 1rem auto;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
+
+.btn {
+  position: absolute; 
+  width: 5%;
+  text-align: center;
+  font-weight: 700;
   border: 1px solid grey;
+  border-radius: 10px;
   padding: 5px 10px;
   background-color: lightseagreen;
 }
-.save-button:hover {
+
+.save {
+  top: 15%;
+  right: 15%;
+}
+
+.edit {
+  top: 30%;
+  right: 15%;
+}
+
+.delete { 
+  top: 45%;
+  right: 15%;
+}
+
+.save:hover, .edit:hover, .delete:hover {
   background-color: green;
   color: white;
 }
 
 .home-button {
   padding: 5px 10px;
+  font-weight: 700;
+  border-radius: 10px;
   background-color: lightskyblue;
 }
 

@@ -27,6 +27,7 @@ const UpdateMovie = (props) => {
 
     console.log(formValues)
 
+ 
     //handlers
     const onSubmit =(e) => {
         e.preventDefault();
@@ -40,11 +41,21 @@ const UpdateMovie = (props) => {
             .catch(err => console.log(err.response));
     }
 
+   
     const handleChange = (e) => {
-        setFormValues({
-            ...formValues,
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name === 'stars') {        
+            const starsArray = e.target.value.split(',');
+            console.log(starsArray)
+            setFormValues({
+                ...formValues,
+                stars: starsArray
+            })
+        } else {
+            setFormValues({
+                ...formValues,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     return(
@@ -76,9 +87,15 @@ const UpdateMovie = (props) => {
                     />
                 </label>
                 <label>Actors
-                    <select>
+                    <input
+                        type="text"
+                        name="stars"
+                        value={formValues.stars}
+                        onChange={handleChange}
+                    />
+                    {/* <select>
                         {formValues.stars.map(star => <option>{star}</option>)}
-                    </select>
+                    </select> */}
                 </label>
                 <button>Accept Changes</button>
             </form>

@@ -86,7 +86,7 @@ const UpdateMovie = (props) => {
                         onChange={handleChange}
                     />
                 </label>
-                <label>Actors
+                <label>Actors (comma separated ",")
                     <input
                         type="text"
                         name="stars"

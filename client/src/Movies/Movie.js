@@ -7,6 +7,7 @@ function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
   const history = useHistory();
+
   const fetchMovie = (id) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
@@ -14,6 +15,11 @@ function Movie({ addToSavedList }) {
       .catch((err) => console.log(err.response));
   };
 
+  useEffect(() => {
+    fetchMovie(params.id);
+  }, [params.id]);
+
+  //Handlers
   const saveMovie = () => {
     addToSavedList(movie);
   };
@@ -22,9 +28,10 @@ function Movie({ addToSavedList }) {
     history.push(`/update-movie/${params.id}`)
   };
 
-  useEffect(() => {
-    fetchMovie(params.id);
-  }, [params.id]);
+  const deleteMovie = () => {
+    history.push(`/update-movie/${params.id}`)
+  };
+
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -34,11 +41,14 @@ function Movie({ addToSavedList }) {
     <div className="save-wrapper">
       <MovieCard movie={movie} />
 
-      <div className="save-button" onClick={saveMovie}>
+      <div className="btn save" onClick={saveMovie}>
         Save
       </div>
-      <div className="edit-button" onClick={editMovie}>
+      <div className="btn edit" onClick={editMovie}>
         Edit
+      </div>
+      <div className="btn delete" onClick={deleteMovie}>
+        Delete
       </div>
     </div>
   );

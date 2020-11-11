@@ -87,24 +87,34 @@ label {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
+
+.btn {
+  position: absolute; 
+  width: 5%;
+  text-align: center;
+  font-weight: 700;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
 }
 
-.edit-button {
-  position: absolute;
+.save {
+  top: 25px;
+  right: 25px;
+}
+
+.edit {
   top: 75px;
   right: 25px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
+ 
 }
-.save-button:hover {
+
+.delete { 
+  top: 125px;
+  right: 25px; 
+}
+
+.save:hover, .edit:hover, .delete:hover {
   background-color: green;
   color: white;
 }

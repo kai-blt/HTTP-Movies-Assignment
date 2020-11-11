@@ -32,10 +32,19 @@ const AddMovie = (props) => {
     }
 
     const handleChange = (e) => {
-        setFormValues({
-            ...formValues,
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name === 'stars') {
+            const starsArray = e.target.value.split(',');
+           console.log(starsArray)
+            setFormValues({
+                ...formValues,
+                stars: starsArray
+            })
+        } else {
+            setFormValues({
+                ...formValues,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     return(
